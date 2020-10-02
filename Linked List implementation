@@ -1,0 +1,90 @@
+public class llist
+{
+    public class node
+    {
+    int data;
+    node next;
+    }
+    
+    node head=null;
+    public static void main(String[] args)
+    {
+       llist a=new llist();
+        a.add(2);
+        a.add(4);
+        a.add(3);
+        a.addatbeg(5);
+        a.show();
+        a.sort();
+        System.out.println("After Sorting");
+        a.show();
+    }
+    void add(int data)
+    {
+        node temp=new node();
+        node p=head;
+        node curr=null;
+        temp.data=data;
+        temp.next=null;
+        
+        if(head==null)
+        {
+            head=temp;
+        }
+        else
+        {
+            while(p!=null)
+            {
+                curr=p;
+                p=p.next;
+            }
+            curr.next=temp;
+        }
+    }
+    void addatbeg(int data)
+    {
+        node temp=new node();
+        temp.data=data;
+        temp.next=null;
+        
+        if(head==null)
+        {
+            head=temp;
+        }
+        else
+        {
+            temp.next=head;
+            head=temp;
+        }
+    }
+    void show()
+    {
+        node p=head;
+        while(p!=null)
+            {
+                System.out.print(p.data+"->");
+                p=p.next;
+            }
+    }
+    void sort()
+    {
+        node temp1=head;
+        node temp2=null;
+        int t;
+        while(temp1!=null)
+        {
+            temp2=temp1.next;
+            while(temp2!=null)
+            {
+                if(temp1.data>temp2.data)
+                {
+                    t=temp1.data;
+                    temp1.data=temp2.data;
+                    temp2.data=t;
+                }
+                temp2=temp2.next;
+            }
+            temp1=temp1.next;
+        }
+    }
+}
